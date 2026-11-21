@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="uz">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="O‘zbek tilidagi IT yangiliklari va texnologiya olamidagi muhim xabarlar.">
+<title>IT NEWS HUB — O‘zbekcha IT yangiliklari</title>
+<style>
+:root{--bg:#0a1020;--panel:#121d32;--panel2:#172641;--line:#2a3a59;--txt:#edf4ff;--muted:#9eacc4;--blue:#70aaff;--mint:#6be0cf;--gold:#ffda8a}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 80% 0,#1b3155 0,transparent 34%),var(--bg);color:var(--txt);font-family:Inter,Segoe UI,Arial,sans-serif}
+header{position:sticky;top:0;z-index:4;background:#0a1020eF;border-bottom:1px solid var(--line);backdrop-filter:blur(12px)}
+.nav,main{max-width:1160px;margin:auto;padding-left:22px;padding-right:22px}.nav{height:68px;display:flex;align-items:center;justify-content:space-between}.brand{font-weight:900;font-size:21px;letter-spacing:1px}.brand span{color:var(--mint)}.status{font-size:12px;color:var(--muted)}
+main{padding-top:28px}.hero{border:1px solid #304b70;border-radius:22px;padding:32px;background:linear-gradient(115deg,#19375c,#121d32 72%);display:flex;align-items:center;justify-content:space-between;gap:20px}
+.kicker{font-size:11px;letter-spacing:2px;color:var(--mint);font-weight:800}.hero h1{font-size:clamp(30px,5vw,46px);margin:12px 0}.hero p{color:#b4c2d9;line-height:1.6;max-width:660px;margin:0}.symbol{font-size:68px;color:#8abaff}
+.stats{display:flex;gap:10px;flex-wrap:wrap;margin:18px 0}.stat{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:11px 14px;color:var(--muted);font-size:12px}.stat b{color:var(--txt);font-size:15px;display:block;margin-bottom:3px}
+.controls{display:flex;gap:10px;margin:22px 0 13px;flex-wrap:wrap}.search{flex:1;min-width:220px;background:var(--panel);border:1px solid var(--line);border-radius:11px;padding:13px 15px;color:var(--txt);font-size:14px;outline:none}.search:focus{border-color:var(--blue)}
+button{cursor:pointer;border:1px solid var(--line);background:var(--panel);color:var(--txt);padding:10px 13px;border-radius:10px;font-weight:650}button.active,button.primary{background:#1d4b7c;border-color:#3d7ec2}
+.filters{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 23px}.filters button{font-size:12px;padding:8px 12px}
+.head{display:flex;justify-content:space-between;align-items:center;gap:12px;margin:25px 0 13px}.head h2{font-size:21px;margin:0}.head span{font-size:12px;color:var(--muted)}
+.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:15px}.card{background:linear-gradient(150deg,var(--panel2),var(--panel));border:1px solid var(--line);border-radius:16px;padding:18px;display:flex;flex-direction:column;min-height:255px}.top{display:flex;justify-content:space-between;gap:8px;align-items:center}.tag{font-size:11px;color:var(--mint);background:#173c43;padding:6px 9px;border-radius:20px}.rank{font-size:11px;color:var(--gold)}.card h3{font-size:17px;line-height:1.4;margin:15px 0 9px}.card p{font-size:13px;line-height:1.6;color:var(--muted);margin:0 0 14px}.meta{font-size:11px;color:#8293b1;margin-top:auto;padding-top:10px}.actions{display:flex;gap:8px;margin-top:12px}.actions button,.actions a{font-size:12px;padding:8px 10px;text-decoration:none}.actions a{color:#c8ddff;border:1px solid var(--line);border-radius:9px}.save.saved{color:var(--gold);border-color:var(--gold)}
+.empty{grid-column:1/-1;text-align:center;border:1px dashed var(--line);border-radius:14px;padding:35px;color:var(--muted);line-height:1.6}.notice{margin:25px 0;padding:14px 16px;background:#13283c;border:1px solid #294761;border-radius:12px;color:#b9cbe1;font-size:12px;line-height:1.6}.footer{text-align:center;color:var(--muted);font-size:11px;border-top:1px solid var(--line);padding:24px;margin-top:36px}
+@media(max-width:850px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.symbol{font-size:48px}}@media(max-width:570px){.grid{grid-template-columns:1fr}.hero{padding:23px}.symbol{display:none}.nav,main{padding-left:15px;padding-right:15px}}
+</style>
+</head>
+<body>
+<header><div class="nav"><div class="brand">IT <span>NEWS</span> HUB</div><div class="status" id="status">Yangiliklar yuklanmoqda…</div></div></header>
+<main>
+<section class="hero"><div><div class="kicker">O‘ZBEK TILIDAGI TEXNOLOGIYA YANGILIKLARI</div><h1>IT olamidan xabardor bo‘ling.</h1><p>Eng yangi texnologiya xabarlari, foydali tahlillar va muhim ma’lumotlar — barchasi bitta joyda.</p></div><div class="symbol">⌘</div></section>
+<div class="stats"><div class="stat"><b id="total">—</b>Yangiliklar</div><div class="stat"><b id="updated">—</b>Oxirgi yangilanish</div><div class="stat"><b id="savedCount">0</b>Saqlanganlar</div></div>
+<div class="controls"><input class="search" id="search" placeholder="Mavzu yoki kalit so‘z bo‘yicha qidirish…"><button class="primary" id="all">Barchasi</button><button id="savedOnly">★ Saqlanganlar</button><button id="refresh">↻ Yangilash</button></div>
+<div class="filters" id="filters"></div>
+<div class="head"><h2 id="heading">So‘nggi yangiliklar</h2><span id="count"></span></div>
+<section class="grid" id="news"><div class="empty">Yangiliklar yuklanmoqda…</div></section>
+<div class="notice"><b>Manba va aniqlik:</b> Yangiliklar ochiq RSS lentasidan olinadi. Sayt sarlavha, qisqacha mazmun, sana va asl maqola havolasini ko‘rsatadi. Muhimlik balli avtomatik mavzu saralashidir, xabarning haqiqatligini kafolatlamaydi. Muhim ma’lumotni asl manbadan tekshiring.</div>
+</main><div class="footer">IT NEWS HUB · O‘zbek tilidagi IT yangiliklari</div>
+<script>
+let items=[],category="Barchasi",saved=JSON.parse(localStorage.getItem("itnh_saved")||"[]"),savedMode=false;
+const cats=["Barchasi","Sun’iy intellekt","Dasturlash","Kiberxavfsizlik","Kompyuter va gadjetlar","Telekommunikatsiya","Startap va biznes"];
+const $=id=>document.getElementById(id);
+function dateText(s){if(!s)return "Sana ko‘rsatilmagan";let d=new Date(s);return isNaN(d)?"Sana ko‘rsatilmagan":d.toLocaleString("uz-UZ",{dateStyle:"medium",timeStyle:"short"})}
+function drawFilters(){$("filters").innerHTML=cats.map(c=>`<button class="${c===category?"active":""}" data-c="${c}">${c}</button>`).join("");$("filters").querySelectorAll("button").forEach(b=>b.onclick=()=>{category=b.dataset.c;savedMode=false;drawFilters();render()})}
+function render(){let q=$("search").value.toLocaleLowerCase("uz");let list=items.filter(a=>(category==="Barchasi"||a.category===category)&&(!savedMode||saved.includes(a.id))&&(`${a.title} ${a.summary} ${a.category}`).toLocaleLowerCase("uz").includes(q));$("heading").textContent=savedMode?"Saqlangan yangiliklar":category==="Barchasi"?"So‘nggi yangiliklar":category;$("count").textContent=list.length+" ta xabar";$("savedCount").textContent=saved.length;
+$("news").innerHTML=list.length?list.map(a=>`<article class="card"><div class="top"><span class="tag">${esc(a.category||"IT")}</span><span class="rank">Saralash: ${a.score||0}/100</span></div><h3>${esc(a.title)}</h3><p>${esc(a.summary||"Maqola mazmunini asl manbadan o‘qing.")}</p><div class="meta">${dateText(a.date)} · ${esc(a.source||"Manba")}</div><div class="actions"><button class="save ${saved.includes(a.id)?"saved":""}" data-save="${a.id}">${saved.includes(a.id)?"★ Saqlandi":"☆ Saqlash"}</button><a href="${safeUrl(a.url)}" target="_blank" rel="noopener noreferrer">Asl maqola ↗</a></div></article>`).join(""):'<div class="empty">Bu bo‘limda hozircha yangilik topilmadi. Keyinroq qayta tekshiring.</div>';
+$("news").querySelectorAll("[data-save]").forEach(b=>b.onclick=()=>{let id=b.dataset.save;saved=saved.includes(id)?saved.filter(x=>x!==id):[...saved,id];localStorage.setItem("itnh_saved",JSON.stringify(saved));render()});}
+function esc(s){return String(s||"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
+function safeUrl(u){try{let x=new URL(u);return ["https:","http:"].includes(x.protocol)?x.href:"#"}catch{return "#"}}
+async function load(){ $("status").textContent="Yangiliklar yangilanmoqda…";try{let r=await fetch("news.json?t="+Date.now(),{cache:"no-store"});if(!r.ok)throw Error("Feed topilmadi");let data=await r.json();items=data.articles||[];$("total").textContent=items.length;$("updated").textContent=data.updated?dateText(data.updated):"—";$("status").textContent="Yangilangan: "+(data.updated?dateText(data.updated):"—");render()}catch(e){$("status").textContent="Yangiliklarni yuklab bo‘lmadi";$("news").innerHTML='<div class="empty">Hozir yangiliklarni yuklab bo‘lmadi. Internet aloqasini tekshirib, qayta urinib ko‘ring.</div>'}}
+$("search").addEventListener("input",render);$("all").onclick=()=>{category="Barchasi";savedMode=false;$("search").value="";drawFilters();render()};$("savedOnly").onclick=()=>{savedMode=!savedMode;render()};$("refresh").onclick=load;drawFilters();load();
+</script>
+</body></html>
